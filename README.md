@@ -1,5 +1,13 @@
 # LinkedHU_CENG Project of Exploding Gradients
 
+## Developers
+
+  * [Humeyra Uçar](https://github.com/humeyraucar)
+  * [Meryem Taşyürek](https://github.com/sumeyyemeryem)
+  * [Tuğçe Kızıltepe](https://github.com/tugcekiziltepe?tab=following)
+  * [Mert Doğramacı](https://github.com/mertdogramaci)
+  * [Murat Çelik](https://muratcelik3506.github.io/)
+  
 LinkedHU_CENG is a full-stack web application that an online system for students (Bachelor’s students, Master students, PhD students and Exchange Students), graduates and academicians at Hacettepe University Computer Engineering Department. This system is similar in functionality to Linkedin system (www.linkedin.com). The name of our system is LinkedHU_CENG. This system is ideal system for students, graduates and academicians at Hacettepe University Computer Engineering Department looking to connect with each other.<br><br>
 
 LinkedHU_CENG system is such platform that enables users to: enroll in the system; create their own profiles; share scholarship, job, or any other opportunities related to the industry; and track the news related to new job opportunities, online meetings, videos etc.<br><br>
