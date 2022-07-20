@@ -1,0 +1,74 @@
+﻿@model LinkedHU_CENG.Models.UnregisteredUser
+
+@{
+    ViewData["Title"] = "Register";
+    var date = ViewData["Date"] as string;
+    Layout = "~/Views/Shared/_LayoutGuest.cshtml";
+}
+
+<br />
+
+<form asp-action="Register" , asp-controller="UnregisteredUser">
+    <div>
+    <div style="margin-top:64px;">
+        <h1 align="center">Register</h1>
+        <div class="col-md-4" style="width:400px; margin:0 auto;">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label"></label>
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" type="email" pattern="[a-z0-9._%+-]+@@[a-z0-9._%+-]*hacettepe.edu.tr" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNum" class="control-label"> Phone Number</label>
+                <input type="tel" placeholder="5xx xxx xxxx" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" asp-for="PhoneNum" class="form-control onchange="addSpaces(this.value);" />
+                <span asp-validation-for="PhoneNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input minlength="6" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label">Birthdate</label>
+                <input asp-for="BirthDate" class="form-control" max="@date"/>
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group" align="center">
+                <div align="left"><label asp-for="Role" class="control-label"></label></div>
+
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="control-label btn-check " id="btnradio1" asp-for="Role" value="student" checked>
+                    <label class="btn btn-outline-secondary" for="btnradio1">Student</label>
+                    <input type="radio" class="control-label btn-check " id="btnradio2" asp-for="Role" value="graduate" checked>
+                    <label class="btn btn-outline-secondary" for="btnradio2">Graduate</label>
+                    <input type="radio" class="control-label btn-check " id="btnradio3" asp-for="Role" value="academician" checked>
+                    <label class="btn btn-outline-secondary" for="btnradio3">Academician</label>
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div align="center" class="form-group" style="" width:400px; margin:0 auto;">
+                <input type="submit" class="btn btn-danger" value="Register" />
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+</form>
+
+
+
+

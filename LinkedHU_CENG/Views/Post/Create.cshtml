@@ -1,0 +1,49 @@
+﻿@model LinkedHU_CENG.Models.Post
+@{
+    ViewData["Title"] = "Post";
+    var isUserValid = ViewData["isBanUserValid"] as int?;
+}
+
+@if (isUserValid == 1)
+{   <br />
+    <br />
+    <br />
+    <br />
+    <form asp-controller="Post" asp-action="Create" method="post" enctype="multipart/form-data" style="margin-top:20px; margin-left:250px; width:600px;">
+        <div class=" p-3 mt-4 custom-margin1 custom-shadow1" style="margin-top:64px; background:#FFFFFF; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px">
+            <div class="mb-3 ">
+                <h5 class="text-primary">  <span style="margin-left:5px; font-size:20px; color:rgb(39, 55, 76);"> Share Post </span> </h5>
+                <div class="form-group">
+                   <textarea asp-for="Content" class="form-control" id="exampleTextarea" style="border:solid 0.5px #abb6c2; box-shadow: inset 2px 2px 2px 0px #ddd;" rows="3"></textarea>
+                </div>
+                <span asp-validation-for="Content" class="text-danger" style= "height:100px;"></span>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PostUpload" class="control-label"></label>
+                        <div class="form-group">
+                            <input asp-for="PostUpload" class="form-control" type="file" accept=".jpeg,jpg,.png,.gif,.mp4,.pdf" id="formFile">
+                        </div>
+                        <span asp-validation-for="PostUpload" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div style="justify-content-center">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Share</button>
+            </div>
+        </div>
+    </form>
+    <br /><br />
+
+}
+
+
+@section scripts{
+<script type="text/javascript">
+
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>
+}

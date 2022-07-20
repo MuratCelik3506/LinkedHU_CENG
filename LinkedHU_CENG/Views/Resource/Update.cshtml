@@ -1,0 +1,84 @@
+﻿@model LinkedHU_CENG.Models.Resource
+@{
+    ViewData["Title"] = "Resource";
+    var isUserValid = ViewData["isBanUserValid"] as int?;
+}
+
+@if (isUserValid == 1)
+{
+    <form asp-controller="Resource" asp-action="Update" method="post" enctype="multipart/form-data">
+        @Html.HiddenFor(model => model.ResourceId)
+        @Html.HiddenFor(model => model.UserId)
+        @Html.HiddenFor(model => model.CreatedAt)
+        @Html.HiddenFor(model => model.ResourceImageName)
+        @Html.HiddenFor(model => model.ResourcePdfName)
+        @Html.HiddenFor(model => model.ResourceExelName)
+        @Html.HiddenFor(model => model.ResourceWordName)
+        @Html.HiddenFor(model => model.ResourcePointName)
+        @Html.HiddenFor(model => model.ResourceVideoName)
+
+        <div class="center">
+            <div class="p-3 mt-4 custom-margin1 custom-shadow1" style="background-color=#fffff;">
+                <div class="mb-3 ">
+                    <h3 class="text-primary">Update Resource</h3>
+                    <h5 class="text-primary">Title </h5>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                    <div class="custom-margin2">
+                        @if (!string.IsNullOrEmpty(Model.ResourceImageName))
+                        {
+                            <a href="~/resourceUploads/@Model.ResourceImageName">See & Download</a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.ResourceVideoName))
+                        {
+                            <video width="320" height="240" controls="controls">
+                                <source src="~/resourceUploads/@Model.ResourceVideoName)" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.ResourcePdfName))
+                        {
+                            <a href="~/resourceUploads/@Model.ResourcePdfName">See & Download</a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.ResourceWordName))
+                        {
+                            <a href="~/resourceUploads/@Model.ResourceWordName">See & Download</a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.ResourcePointName))
+                        {
+                            <a href="~/resourceUploads/@Model.ResourcePointName">See & Download</a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.ResourceExelName))
+                        {
+                            <a href="~/resourceUploads/@Model.ResourceExelName">See & Download</a>
+                        }
+                    </div>
+                    <br />
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="UploadedFile" class="control-label"></label>
+                            <div class="custom-file">
+                                <input asp-for="UploadedFile" type="file" accept=".ppt,.pptx,.xls,.xlsx,.doc,.docx,.mp4,.pdf" />
+                            </div>
+                            <span asp-validation-for="UploadedFile" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Update</button>
+            </div>
+        </div>
+    </form>
+}
+
+
+
+@section scripts{
+<script type="text/javascript">
+
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>
+} 

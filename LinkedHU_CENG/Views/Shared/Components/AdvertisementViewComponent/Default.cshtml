@@ -1,0 +1,37 @@
+﻿@model List<LinkedHU_CENG.Models.ViewModels.AdvertisementViewModel>
+
+@{
+    var sessionUserID = ViewData["SessionUserId"] as Int32?;
+}
+
+<div class="container p-3" style= "background-color:#ffffff;">
+    <h4 style="text-align:center">Advertisements</h4>
+
+    <table class="table table-striped" style="width:100%">
+
+
+        @foreach (var obj in Model.OrderByDescending(a => a.Advertisement.AdvertisementId))
+        {
+            if (obj.Advertisement.IsActive)
+            {
+                <div class="card border p-3 mt-4  custom-shadow1" style="background-color:#ffffff;">
+                <div class="custom-margin1" style="padding:20px;">
+                    <h5>@obj.Advertisement.Title</h5>
+                    <h6>@obj.Advertisement.Company</h6>
+                    <h6>@obj.Advertisement.Type</h6>
+                    <h6>@obj.Advertisement.Location</h6>
+                    <small class="text-muted">@obj.Advertisement.UserName @obj.Advertisement.CreatedAt</small>
+                    <br> <br/>
+                    <h6>@obj.Advertisement.Description</h6>
+				    <br> 
+                    <center><input type="button "  class="btn btn-secondary my-2 my-sm-0"value="Apply" onclick="@("window.location.href='" + @Url.Action("Create", "Application",  obj) + "'");" /></center>
+                </div>
+            </div>
+            <br/>
+            }
+            
+            
+        }
+
+    </table>
+</div>

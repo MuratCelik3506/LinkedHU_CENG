@@ -1,0 +1,33 @@
+﻿@model LinkedHU_CENG.Models.Announcement
+@{
+    ViewData["Title"] = "Announcement";
+    var isUserValid = ViewData["isBanUserValid"] as int?;
+
+}
+@if (isUserValid == 1)
+{
+    <br />
+    <br />
+    <br />
+    <br />
+    <div style="margin-bottom:89px;">
+        <form asp-controller="Announcement" asp-action="Create" method="post" enctype="multipart/form-data" style="margin-left:250px; margin-top:20px; width:360px;height:100px">
+        <div class=" p-3 mt-4 custom-margin1 custom-shadow1" style="margin-top:64px; background:#FFFFFF; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px">
+            <div class="mb-3 ">
+                <h5 class="text-primary" style=""><span style="margin-left:5px; font-size:20px; color:rgb(39, 55, 76);"> Share Announcement </span></h5>
+                <div class="form-group">
+                    <textarea asp-for="Content" class="form-control" id="exampleTextarea" style="border:solid 0.5px #abb6c2; box-shadow: inset 2px 2px 2px 0px #ddd;" rows="3"></textarea>
+                </div>
+                <span asp-validation-for="Content" class="text-danger"></span>
+
+            </div>
+            <div style="justify-content-center">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit" > <span style="margin-top:4px;"> Share</span></button>
+            </div>
+        </div>
+    </form>
+    </div>
+    <br /><br />
+    
+    
+}

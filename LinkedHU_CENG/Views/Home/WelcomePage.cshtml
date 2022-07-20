@@ -1,0 +1,137 @@
+﻿@{
+    ViewData["Title"] = "WelcomePage";
+    Layout = "~/Views/Shared/_LayoutGuest.cshtml";
+    var stateForget = ViewData["ForgetPassword"] as Int32?;
+    var stateChangePassword = ViewData["changePasswordToHome"] as Int32?;
+}
+
+
+<style>
+    .div-1 {
+        background-color: #FFFFFF;
+    }
+
+</style>
+
+<div style="display:block; width:100%; margin-top:100px;">
+  <div style="width:65%; float: left; display: inline-block;">
+       <img class="mr-3" alt="Bootstrap Media Preview" src="/profilePictures/bm.jpg" width="750" 
+     height="750"/>
+      </div>
+	  </br></br></br></br></br></br></br></br></br>
+
+    <div style="width:35%; float: left; display: inline-block;">
+        <div class="div-1 container-fluid">
+            <div class="row">
+
+                <div class="col-md-12" style="background-color:#F8F8F8;">
+                <h3>
+                    Welcome to LinkedHU_CENG!
+                </h3>
+                <p> LinkedHU_CENG is a web based online networking platform that enables users easily make contact with each other and share job opportunities. It is for students, graduates and academicians at  Hacettepe University who want to connect with each other.
+                </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="box-success-password" class="alert alert-dismissible alert-success" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong> Your password has been successfully changed. Please login again.
+</div>
+
+<div id="box-success" class="alert alert-dismissible alert-success" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong> Your request for the password to the admin has been successfully received.
+</div>
+
+<div id="box-userNotFound" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px;
+    background-color:#FFC300">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Warning!</strong> No such user mail was found in the system.
+</div>
+
+<div id="box-fail" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Oh snap!</strong> There was an error in sending your password request to the admin.
+</div>
+
+@{
+    if (stateForget == 10)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-success");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-success");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateForget == 15)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-userNotFound");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-userNotFound");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateForget == -10)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateChangePassword == 1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-password");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-password");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+}

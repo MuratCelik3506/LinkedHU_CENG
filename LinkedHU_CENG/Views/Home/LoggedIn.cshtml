@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var isUserValid = ViewData["isBanUserValid"] as int?;
+    var userRole = ViewData["UserRole"] as string;
+}
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+
+<div style="display:block; width:100%; margin-top:100px;">
+    <div style="width:65%; float: left; display: inline-block;">
+        <div style="margin-top:-100px">
+            <partial name="~/Views/Post/Create.cshtml" view-data="ViewData" />
+        </div>
+        <section id='title-wrapper' style="margin-left:250px;">
+            <div class='line'></div>
+            <div class='title'><span style=" font-size:15px; color:rgb(39, 55, 76, 0.5);"> posts</span></div>
+            <div class='line'></div>
+        </section>
+        <div>
+            @await Component.InvokeAsync("PostViewComponent")
+        </div>
+    </div>
+    <div style="width:35%; float: left; display: inline-block;">
+
+        @if (isUserValid == 1)
+        {
+            @if (userRole != "student")
+            {
+                <div style="margin-top:-100px">
+                    <partial name="~/Views/Announcement/Create.cshtml" view-data="ViewData" />
+                </div>
+            }
+        }
+        <section id='title-wrapper' style="margin-left:250px; margin-top:80px; width:360px;">
+            <div class='line'></div>
+            <div class='title'><span style=" font-size:15px; color:rgb(39, 55, 76, 0.5);"> announcements</span></div>
+            <div class='line'></div>
+        </section>
+        <div>
+            @await Component.InvokeAsync("AnnouncementViewComponent")
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,168 @@
+﻿@model LinkedHU_CENG.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutGuest.cshtml";
+    var stateRegister = ViewData["RegisterState"] as Int32?;
+    var stateLogin = ViewData["LoginState"] as Int32?;
+}
+
+<br />
+<br />
+<form asp-action="Login">
+    <div style="margin-top:64px;">
+        <h1 align="center">Login</h1>
+        <div class="col-md-4" style="width:400px; margin:0 auto;">
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" required />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div align="center" class="form-group" style="" width:400px; margin:0 auto;">
+                <input type="submit" class="btn btn-danger" value="Login" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<form>
+    <div style="text-align:center;">
+        <input asp-controller="User" asp-action="ForgetPassword" class="btn btn-link" type="submit" value = "Forget Password"/>
+    </div>
+</form>
+
+
+
+<div id="box-success" class="alert alert-dismissible alert-success" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong> Successfully registered. You have to wait until the admin approves.
+</div>
+
+<div id="box-fail-login" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Oh snap!</strong> There was a problem. Failed to login.
+</div>
+
+<div id="box-fail-register" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Oh snap!</strong> There was a problem. You could not register.
+</div>
+
+<div id="box-sameFail-register" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px;
+    background-color:#FFC300">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Warning!</strong> There are users registered with the same information. 
+</div>
+
+<div id="box-sameFail-login" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px;
+    background-color:#FFC300">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Warning!</strong> No user found for this information.
+</div>
+
+
+
+@{
+    if (stateRegister == 1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-success");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-success");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateRegister == 2)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-sameFail-register");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-sameFail-register");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateRegister == 3)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-register");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-register");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateLogin == 2)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-sameFail-login");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-sameFail-login");
+
+                box.style.visibility = "hidden";
+            },25000);
+        </script>
+    }
+    else if (stateLogin == 3)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-login");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-login");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+
+}

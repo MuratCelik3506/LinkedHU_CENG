@@ -1,0 +1,49 @@
+﻿@model List<LinkedHU_CENG.Models.ViewModels.AdvertisementViewModel>
+
+@{
+    var applications = ViewData["Application"] as List<Application>;
+    var sessionUserID = ViewData["SessionUserId"] as Int32?;
+    ViewData["Title"] = "My Applications";
+}
+
+<div class="container" style="margin-top:150px; ">
+    <div class="main-body">
+            <div class="row ">
+                <div class="col">
+                    <div id="mySidenav" class="sidenav">
+                        <input class="btn btn-secondary my-2 my-sm-0 "type="button"  style="width:180px;text-align:left;"  value="Add Advertisement" onclick="@("window.location.href='" + @Url.Action("Create", "Advertisement") + "'");" />
+                        <br>
+                        <br>
+                        <input class="btn btn-secondary my-2 my-sm-0 "type="button"  style="width:180px;text-align:left;" value="My Applications" onclick="@("window.location.href='" + @Url.Action("Index", "Application") + "'");" />
+                    </div>
+                </div>
+                <center>
+               <div class="col-sm-6 mb-3">
+                    <div class="container h-100" style="background-color:#ffffff; margin-top:-100px;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+                        <div class="card-body"style="background-color:#ffffff;">
+
+                   
+                                    <h4 align="center" ; class="align-items-center mb-3" style="margin-top:10px;"><b>My Applications</b></h4>
+                
+                                    @foreach (var obj in applications.OrderByDescending(a => a.ApplicationId))
+                                    {
+                                        <div class="card p-3 mt-4  custom-shadow1" style="background-color:#ffffff;">
+                                            <div class="custom-margin1">
+                                                <h5>@obj.Company</h5> 
+                                                <h6>@obj.AdvertisementTitle</h6>
+                                                <h6><bold>Application ID:</bold> @obj.ApplicationId <bold> - Application Date:</bold> @obj.CreatedAt</h6>
+                                                <center><input type="button" class="btn btn-secondary my-2 my-sm-0"  value="View Application" onclick="@("window.location.href='" + @Url.Action("ViewApplication", "Application",  obj) + "'");" /></center>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </center>
+
+        </div>
+    </div>
+</div>

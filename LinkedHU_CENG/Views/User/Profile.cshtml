@@ -1,0 +1,292 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    var user = ViewData["User"] as User;
+    var posts = ViewData["Posts"] as List<Post>;
+    var resources = ViewData["Resources"] as List<Resource>;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var sessionUserID = ViewData["SessionUserId"] as Int32?;
+    var isFollow = ViewData["IsFollow"] as Int32?;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LinkedHU_CENG</title>
+    <link rel="stylesheet" href="~/css/BootstrapProfile.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PostgreSQL.styles.css" asp-append-version="true" />
+</head>
+
+<br />
+<br />
+<br />
+<br />
+<div class="container"
+    <div class="main-body">
+        <div class="row"  style="margin-top: 64px;">
+
+            <div class="col">
+                <div class="card-profile">
+                    <div class="card" style="background-color:#ffffff">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            @if (user.ProfilePicturePath == null)
+                            {
+                                                                            <img src="https://static.thenounproject.com/png/2518416-200.png" alt="Admin" class="rounded-circle" width="150">
+                            }
+                            else
+                            {
+                                                                            <img src="~/profilePictures/@user.ProfilePicturePath" alt="Admin" class="rounded-circle" height="150" width="150">
+                            }
+                            <div class="mt-3">
+                                <h4>@user.Name @user.Surname</h4>
+                                @if (user.Title == null)
+                                {
+                                                                                <p class="text-secondary mb-1"></p>
+                                }
+                                else
+                                {
+                                                                                <p class="text-secondary mb-1">@user.Title</p>
+                                }
+                            </div>
+                            <div class="mt-3">
+                                @{
+                                    if (sessionUserID != user.UserId)
+                                    {
+                                        if (isFollow == 1)
+                                        {
+                                                                                                                                                    <a asp-controller="Follow" asp-action="UnFollowing" asp-route-id="@user.UserId"
+                                                        class="btn btn-danger mx-2"> UnFollow</a>
+                                        }
+                                        else
+                                        {
+                                                                                                                                                    <a asp-controller="Follow" asp-action="Following" asp-route-id="@user.UserId"
+                                                            class="btn btn-danger mx-2"> Follow</a>
+                                        }
+
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row gutters-sm">
+                    <div class="col-sm-6 mb-3">
+                        <div class="card h-100 " style="background-color:#ffffff">
+                            <div class="card-body">
+                                <h6 align="center" ; class="align-items-center mb-3">Personal Information</h6>
+                                     <div class="card-aboutme col" style="background-color:#ffffff">
+
+                                    <ul class="list-group list-group-flush">
+                                       <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                            <h6 class="mb-0"><span style="margin-left:5px; font-size:15px; color:rgb(39, 55, 76);"> Phone Number</span></h6>
+                                            <h6 class="text-secondary h6-custom"><span style="margin-left:5px; font-size:15px; color:rgb(39, 55, 76);"> @user.PhoneNum</span></h6>
+                                        </li>
+                                        <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                            <h6 class="mb-0"><span style="margin-left:5px; font-size:15px; color:rgb(39, 55, 76);"> Email Address</span></h6>
+                                            <h6 class="text-secondary h6-custom"><span style="margin-left:5px; font-size:15px; color:rgb(39, 55, 76);"> @user.Email</span>
+                                        </li>
+                                        @if (@user.Location == null)
+                                        {
+                                                                            <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                                                                <h6 class="mb-0"><span style="margin-left:5px; font-size:15px; color:rgb(39, 55, 76);"> Location</span></h6>
+                                                                                <h6 class="text-secondary h6-custom"><span style="margin-left:5px; font-size:15px; color:rgb(39, 55, 76);"> You can add your location information.</span></h6>
+                                                                            </li>
+                                        }
+                                        else
+                                        {
+                                                                            <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                                                                <h6 class="mb-0"><span style="margin-left:5px; font-size:15px; color:rgb(39, 55, 76);"> Location<span></h6>
+                                                                                <h6 class="text-secondary h6-custom"><span style="margin-left:5px; font-size:15px; color:rgb(39, 55, 76);"> @user.Location</span></h6>
+                                                                            </li>
+                                        }
+                                        <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                            <h6 class="mb-0"><span style="margin-left:5px; font-size:15px; color:rgb(39, 55, 76);"> Birthdate</span></h6>
+                                            <h6 class="text-secondary h6-custom"><span style="margin-left:5px; font-size:15px; color:rgb(39, 55, 76);"> @user.BirthDate</span></h6>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="card h-100" style="background-color:#ffffff">
+                            <div class="card-body">
+                                @if (@user.About == null)
+                                {
+                                                                    <h6 align="center" ; class="align-items-center mb-3">About Me</h6>
+                                                                    <div class="card-aboutme col" style="background-color:#ffffff">
+                                                                        <ul class="list-group list-group-flush">
+                                                                            <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                                                                <h6 class="mb-0 h6-custom">
+                                                                                    <span style="margin-left:5px; font-size:15px; color:rgb(39, 55, 76);">  You can write about your years of experience, industry, or skills. People also talk about their achievements or previous job experiences.</span>
+                                                                                </h6>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                }
+                                else
+                                {
+                                                                    <h6 align="center" ; class="align-items-center mb-3">About Me</h6>
+                                                                    <div class="card-aboutme col " style="background-color:#ffffff">
+                                                                        <ul class="list-group list-group-flush">
+                                                                            <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                                                                <span style="margin-left:5px; font-size:15px; color:rgb(39, 55, 76);"> @user.About</span>
+
+                                                                            </li>
+                                                                                    </ul>
+                                                                                </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                    @if (resources != null)
+                    {
+                    @foreach (Resource resource in resources)
+                    {
+                                            <section id='title-wrapper'>
+                                                <div class='line'></div>
+                                                <div class='title'><span style=" font-size:15px; color:rgb(39, 55, 76, 0.5);"> resources</span></div>
+                                                <div class='line'></div>
+                                            </section>
+                                            <div class="card custom-shadow1" style="margin-left:7px; width:496px; background-color:#ffffff;padding:30px;">
+                                                <div class="custom-margin1">
+                                                    <h5><span style="margin-left:5px; font-size:20px; color:rgb(39, 55, 76);"> @resource.Title</span></h5>
+                                                    <span style="margin-left:5px; font-size:12px; color:rgb(39, 55, 76, 0.7);"> @resource.CreatedAt</span>
+                                                    <br />
+                                @if (resource.ResourceImageName != null)
+                                {
+                                    @*<img src="~/postUploads/@obj.ResourceImageName" class="col-sm-10 center" asp-append-version="true" width="300" height=auto />*@
+                                                                            <a href="~/resourceUploads/@resource.ResourceImageName">See & Download</a>
+                                }
+                                @if (resource.ResourceVideoName != null)
+                                {
+                                                                            <video width="320" height="240" controls="controls">
+                                                                            <source src="~/resourceUploads/@resource.ResourceVideoName" type="video/mp4">
+                                                                                Your browser does not support the video tag.
+                                                                            </video>
+                                }
+                                @if (resource.ResourcePdfName != null)
+                                {
+                                    @*<embed src="~/postUploads/@obj.ResourcePdfName" height="500px" width="100%" />*@
+                                                                            <a href="~/resourceUploads/@resource.ResourcePdfName">See & Download</a>
+                                }
+                                @if (resource.ResourceWordName != null)
+                                {
+                                    @*<embed src="~/postUploads/@obj.ResourcePdfName" height="500px" width="100%" />*@
+                                                                            <a href="~/resourceUploads/@resource.ResourceWordName">See & Download</a>
+                                }
+                                @if (resource.ResourceExelName != null)
+                                {
+                                    @*<embed src="~/postUploads/@obj.ResourcePdfName" height="500px" width="100%" />*@
+                                                                            <a href="~/resourceUploads/@resource.ResourceExelName">See & Download</a>
+                                }
+                                @if (resource.ResourcePointName != null)
+                                {
+                                    @*<embed src="~/postUploads/@obj.ResourcePdfName" height="500px" width="100%" />*@
+                                                                            <a href="~/resourceUploads/@resource.ResourcePointName">See & Download</a>
+                                }
+                                                    <br />
+                                                </div>
+                                            </div>
+                                            <br />
+                    }
+                    
+                        
+                    }
+                </div>
+            </div>
+            <div class="col mt-3">
+                <div class="card" style="background-color:#ffffff">
+                    <div class="card-body">
+                        <div style="display:block; width:100%;">
+
+                            <table class="table table-bordered table-striped" style="width:100%">
+                                @foreach (var obj in posts)
+                                {
+                                                                        <div class="card" style="background-color:#ffffff; padding:30px;">
+                                                                            <div class="custom-margin1">
+                                                                                <div id="wrapperDiv">
+                                                                                    <div id="div2" style="padding:5px;float:right;color:#ffffff">
+                                                                                        <button onclick="copyText()" style="border:none; color:#4c9be8; background:none"><i class="fa-solid fa-share-nodes"></i></button>
+                                                        <script>
+                                                            function copyText() {
+                                                                navigator.clipboard.writeText
+                                                                    ("https://localhost:7263/Post/ViewPost/" + @obj.PostId );
+                                                                setTimeout(()=>{
+                                                                    const box = document.getElementById("box-success");
+
+                                                                    box.style.visibility = "visible";
+                                                                },50);
+                                                                setTimeout(()=>{
+                                                                    const box = document.getElementById("box-success");
+
+                                                                    box.style.visibility = "hidden";
+                                                                },2500);
+                                                            }
+                                                        </script>
+                                                                                    </div>
+                                                                                    <div id="div2" style="padding:5px;float:right;color:#ffffff">
+                                                                    </div>
+                                                                    <div id="div2" style="padding:5px;float:right;color:#ffffff">
+                                                    @if (sessionUserID == user.UserId)
+                                                    {
+                                                                                                                                <div class="dropdown text-end">
+                                                                                                                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="text-decoration: none;">Edit</a>
+                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                <a style=" color:rgb(39, 55, 76);" asp-controller="Post" asp-action="Update" asp-route-id="@obj.PostId"
+                                               class="dropdown-item mx-2 w-75"> <i class="bi bi-pencil-square"></i> Update</a>
+
+                                                                <a style=" color:rgb(39, 55, 76);" asp-controller="Post" asp-action="Delete" asp-route-id="@obj.PostId"
+                                               class="dropdown-item mx-2 w-75"> <i class="bi bi-trash-fill"></i> Delete</a>
+                                                                                                                                    </div>
+                                                                                                                                </div>
+                                                    }
+                                                                                    </div>
+                                                                                </div>
+                                            @if (obj.UserProfilePicture == null)
+                                            {
+                                                                                                                        <img src="https://static.thenounproject.com/png/2518416-200.png" class="rounded-circle" height="40" width="40" asp-append-version="true" /> @obj.UserName
+                                            }
+                                            else
+                                            {
+                                                                                                                        <img src="~/profilePictures/@obj.UserProfilePicture" class="rounded-circle" height="40" width="40" asp-append-version="true" /> @obj.UserName
+                                            }
+                                            @*<h5>@obj.UserName</h5>*@
+                                                                                <br />
+                                                                                <small class="text-muted"> <span style="color:rgb(39, 55, 76);">@obj.CreatedAt</span></small>
+                                                                                <br /> <br />
+                                                                                <h6>@obj.Content</h6>
+
+                                                                                   <br />
+                                            @{
+                                                bool takeAll = false;
+
+                                            }
+                                             @await Component.InvokeAsync("CommentViewComponent", new {obj.PostId, takeAll})
+                                                             <a asp-controller="Post" asp-action="ViewPost" asp-route-id="@obj.PostId"> Click here to see more comments.</a>
+                                                            </div>
+                                                        </div>
+                                                        <br />
+
+
+                                }
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+</div>
+

@@ -1,0 +1,82 @@
+﻿@model LinkedHU_CENG.Models.Advertisement
+@{
+    ViewData["Title"] = "Advertisement";
+}
+
+<div class="container" style="margin-top:150px;">
+    <form asp-action="Update" asp-controller="Advertisement" method="post">
+        <div class="main-body">
+            <div class="row ">
+                <div class="col">
+                    <div id="mySidenav" class="sidenav">
+                        <a class="btn btn-secondary my-2 my-sm-0" asp-area="" asp-controller="Advertisement" asp-action="Create">Add Advertisement</a>
+                        <br>
+                        <a class="btn btn-secondary my-2 my-sm-0" asp-area="" asp-controller="Application" asp-action="Index">My Applications</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row gutters-sm">
+                        <div class="col-sm-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 align="center" ; class="align-items-center mb-3"><b>Update Advertisement</b></h6>
+                                    <div class="card-aboutme col">
+                                        <ul class="list-group list-group-flush">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <div class="form-group">
+                                                <label asp-for="Title" class="control-label"></label>
+                                                <input asp-for="Title" class="form-control" />
+                                                <span asp-validation-for="Title" class="text-danger"></span>
+                                            </div>
+
+                                            <div class="form-group" align="center">
+                                                <div align="left"><label asp-for="Type" class="control-label"></label></div>
+
+                                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                    <input type="radio" class="control-label btn-check " id="btnradio1" asp-for="Type" value="Scholarship" checked>
+                                                    <label class="btn btn-outline-info" for="btnradio1">Scholarship</label>
+                                                    <input type="radio" class="control-label btn-check " id="btnradio2" asp-for="Type" value="Internship" checked>
+                                                    <label class="btn btn-outline-info" for="btnradio2">Internship</label>
+                                                    <input type="radio" class="control-label btn-check " id="btnradio3" asp-for="Type" value="Job" checked>
+                                                    <label class="btn btn-outline-info" for="btnradio3">Job</label>
+                                                    <span asp-validation-for="Type" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Company" class="control-label"></label>
+                                                <input asp-for="Company" class="form-control" />
+                                                <span asp-validation-for="Company" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Location" class="control-label"></label>
+                                                <input asp-for="Location" class="form-control" />
+                                                <span asp-validation-for="Location" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Description" class="control-label"></label>
+                                                <input asp-for="Description" class="form-control" style="height: 200px;" />
+                                                <span asp-validation-for="Description" class="text-danger"></span>
+                                            </div>
+                                            <div align="center" class="form-group" style="" width:400px; margin:0 auto;">
+                                                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Share</button>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h6 align="center" ; class="align-items-center mb-3"><b>My Advertisements</b></h6>
+                            @await Component.InvokeAsync("OwnedAdvertisementViewComponent")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

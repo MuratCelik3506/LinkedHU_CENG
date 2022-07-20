@@ -1,0 +1,225 @@
+﻿@{
+    var userModel = ViewData["users"] as List<User>;
+    var studentRepresentatives = ViewData["studentRepresentatives"] as List<User>;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var stateselect = ViewData["stateselect"] as Int32?;
+    var stateUnselect = ViewData["stateUnselect"] as Int32?;
+}
+
+
+
+<div class="row ">
+
+
+
+    <div style="margin-top:30px;">
+            <form asp-controller="Administrator" asp-action="StudentRepresentativeSearch" class="align-items-center  d-flex">
+                <input type="text" id="fname" name="SearchName" style="width:40%; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;" class="form-control me-sm-2" placeholder="Search">
+                <input style="margin-top:-15px;" type="submit" class="btn btn-light my-2 my-sm-0" value="Search">
+            </form>
+        </div>
+
+
+
+    <div class="container p-3" style="margin-top:15px;">
+        <table class="table table-bordered table-striped" style="width:100%;">
+            <h5> Search Results </h5>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in userModel)
+                {
+                    <tr>
+                        <td> @obj.Name </td>
+                        <td> @obj.Surname </td>
+                        <td> @obj.Email </td>
+
+                        <td>
+                            @{
+                                bool bool_ban = true;
+
+                                foreach (var ban in studentRepresentatives)
+                                {
+                                    if (ban.UserId.Equals(obj.UserId))
+                                    {
+                                        bool_ban = false;
+                                    }
+                                }
+
+                                if (bool_ban)
+                                {
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Options</a>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a asp-controller="Administrator" asp-action="StudentRepresentativeAccept" asp-route-id="@obj.UserId"
+                                   class="dropdown-item mx-2 w-75"> <i class="bi bi-trash-fill"></i> Select Representative</a>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Options</a>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a asp-controller="Administrator" asp-action="StudentRepresentativeRevert" asp-route-id="@obj.UserId"
+                                   class="dropdown-item mx-2 w-75"> <i class="bi bi-trash-fill"></i> Cancel Representatative</a>
+                                        </div>
+                                    </div>
+
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+
+    <div class="container p-3" style="margin-top:15px;">
+        <table class="table table-bordered table-striped" style="width:100%">
+            <h5> Student Representatives </h5>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in studentRepresentatives)
+                {
+                    <tr>
+                        <td> @obj.Name </td>
+                        <td> @obj.Surname </td>
+                        <td> @obj.Email </td>
+
+                        <td>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Options</a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a asp-controller="Administrator" asp-action="StudentRepresentativeRevert" asp-route-id="@obj.UserId"
+                                   class="dropdown-item mx-2 w-75"> <i class="bi bi-trash-fill"></i> Cancel Representatative</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+
+<div id="box-success-select" class="alert alert-dismissible alert-success" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong> Student Representative has been successfully selected.
+</div>
+
+<div id="box-success-unselect" class="alert alert-dismissible alert-success" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong> Student Representative title has been successfully removed.
+</div>
+
+
+
+
+<div id="box-fail-select" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Oh snap!</strong> There was an error in student representative selection.
+</div>
+
+<div id="box-fail-unselect" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Oh snap!</strong> There was an error removing the student representative title.
+</div>
+
+
+
+@{
+    if (stateselect == 1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-select");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-select");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateUnselect == 1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-unselect");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-unselect");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateselect == -1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-select");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-select");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateUnselect == -1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-unselect");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-unselect");
+
+                box.style.visibility = "hidden";
+            },25000);
+        </script>
+    }
+
+}

@@ -1,0 +1,177 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var unregisteredUser = ViewData["UnregisteredUsers"] as List<UnregisteredUser>;
+    var stateAccept = ViewData["stateAccept"] as Int32?;
+    var stateRevert = ViewData["stateRevert"] as Int32?;
+    ViewData["Title"] = "VerifyAccounts";
+}
+
+
+<div style="display:block; width:100%;">
+    <div class="container p-3" >
+
+    <br /><br />
+
+    <table class="table table-bordered table-striped" style="width:100%;">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Surname
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Phone Number
+                </th>
+                <th>
+                    Birthdate
+                </th>
+                <th>
+                    Role
+                </th>
+                <th>
+                    Settings
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in unregisteredUser)
+            {
+                <tr>
+                    <td> @obj.Name </td>
+                    <td> @obj.Surname </td>
+                    <td> @obj.Email </td>
+                    <td> @obj.PhoneNum </td>
+                    <td> @obj.BirthDate </td>
+                    <td> @obj.Role </td>
+
+                    <td>
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Options</a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a asp-controller="Administrator" asp-action="VerifyAnAccount" asp-route-id="@obj.UserId"
+                               class="dropdown-item mx-2 w-75"> <i class="bi bi-person-check"></i> Verify</a>
+                                <a asp-controller="UnregisteredUser" asp-action="Delete" asp-route-id="@obj.UserId"
+                               class="dropdown-item mx-2 w-75"> <i class="bi bi-trash-fill"></i> Delete</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</div>
+
+
+
+
+<div id="box-success-accept" class="alert alert-dismissible alert-success" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong> The user has been successfully accepted.
+</div>
+
+<div id="box-success-revert" class="alert alert-dismissible alert-success" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong> User registration request deleted successfully.
+</div>
+
+
+
+
+<div id="box-fail-accept" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Oh snap!</strong> An unexpected error occurred while accepting a user registration request.
+</div>
+
+<div id="box-fail-revert" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Oh snap!</strong> An unexpected error occurred while deleting the user registration request.
+</div>
+
+
+
+@{
+    if (stateAccept == 1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-accept");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-accept");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateRevert == 1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-revert");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-revert");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateAccept == -1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-accept");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-accept");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateRevert == -1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-revert");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-revert");
+
+                box.style.visibility = "hidden";
+            },25000);
+        </script>
+    }
+
+}

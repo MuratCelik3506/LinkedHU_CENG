@@ -1,0 +1,60 @@
+﻿@model LinkedHU_CENG.Models.Advertisement
+@{
+    ViewData["Title"] = "Advertisement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var stateAdvertisement = ViewData["StateAdvertisement"] as Int32?;
+}
+
+<div class="container" style="margin-top:150px; ">
+    <form asp-action="Index" asp-controller="Advertisement" method="post">
+        <div class="main-body" >
+            <div class="row ">
+                <div class="col" >
+                    <div id="mySidenav" class="sidenav">
+                        <input class="btn btn-secondary my-2 my-sm-0 "type="button"  style="width:180px;text-align:left;"value="  Add Advertisement" onclick="@("window.location.href='" + @Url.Action("Create", "Advertisement") + "'");" />
+                        <br>
+                        <br>
+                        <input  class="btn btn-secondary my-2 my-sm-0 "type="button" style="width:180px;text-align:left;"value="  My Applications" onclick="@("window.location.href='" + @Url.Action("Index", "Application") + "'");" />
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <div class="container " style="background-color:#ffffff;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+                        <div class="card-body" >
+                            @await Component.InvokeAsync("AdvertisementViewComponent")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<div id="box-ban" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px; 
+    right: 0px; 
+    width: 40%;
+    z-index:9999; 
+    border-radius:0px; 
+    background-color:#FFC300">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <strong>Warning!</strong> The page is not displayed because you have been banned.
+</div>
+
+@{
+    if(stateAdvertisement == 3)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-ban");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-ban");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+}

@@ -1,0 +1,133 @@
+﻿@model LinkedHU_CENG.Models.Administrator
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var user = ViewData["User"] as List<User>;
+    var unregisteredUser = ViewData["UnregisteredUser"] as List<UnregisteredUser>;
+    var report = ViewData["Report"] as List<Report>;
+    var deleteRequests = ViewData["DeleteRequest"] as List<DeleteRequest>;
+    var passwordRequests = ViewData["PasswordRequest"] as List<ForgetPassword>;
+    var posts = ViewData["Post"] as List<Post>;
+    var announcements = ViewData["Announcement"] as List<Announcement>;
+    var mergeRequest = ViewData["MergeEmailRequest"] as List<MergeEmailRequest>;
+    var advertisements = ViewData["Advertisements"] as List<Advertisement>;
+    var systemVersion = ViewData["SystemVersion"];
+}
+
+<div class="col">
+
+
+
+    <div class="d-flex flex-column align-items-center text-center" style="margin-top:20px;">
+        <h2>Welcome to the system administrator panel</h2>
+    </div>
+
+    <div class="row gutters-sm" style="margin-top:20px; font-size:14px;">
+        <div class="col-sm-6 mb-3">
+            <div  style="background-color: #e5e7e8;" class="card h-100">
+                <div class="card-body">
+                    <h5 align="center" ; class="align-items-center mb-3">Admin Panel Statistics</h5>
+                    <div class="card-aboutme col">
+                        <ul  style="background-color: #e5e7e8;" class="list-group list-group-flush">
+                            <li style="background-color: #e5e7e8; color:black" class="list-group-item justify-content-between align-items-center flex-wrap">
+                                Number of Users Waiting for Approval : @unregisteredUser.Count
+                            </li>
+                            <li style="background-color: #e5e7e8;color:black" class="list-group-item justify-content-between align-items-center flex-wrap">
+                                Number of Account Deletion Requests : @deleteRequests.Count
+                            </li>
+                            <li style="background-color: #e5e7e8;color:black" class="list-group-item justify-content-between align-items-center flex-wrap">
+                                Number of Password Requests : @passwordRequests.Count
+                            </li>
+                            <li style="background-color: #e5e7e8;color:black" class="list-group-item justify-content-between align-items-center flex-wrap">
+                                Number of Email Merge Requests : @mergeRequest.Count
+                            </li>
+                            <li style="background-color: #e5e7e8;color:black" class="list-group-item justify-content-between align-items-center flex-wrap">
+                                Number of Users Reported : @report.Count
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+            <div  style="background-color: #e5e7e8;" class="card h-100">
+                <div class="card-body">
+                    <h5 align="center" ; class="align-items-center mb-3">System Statistics</h5>
+                    <div class="card-aboutme col">
+                        <ul class="list-group list-group-flush">
+                            <li style="background-color: #e5e7e8;color:black" class="list-group-item justify-content-between align-items-center flex-wrap">
+                                Number of Users Registered in the System : @user.Count
+                            </li>
+                            <li style="background-color: #e5e7e8;color:black" class="list-group-item justify-content-between align-items-center flex-wrap">
+                                Number of Active Advertisements in the System : @advertisements.Count
+                            </li>
+                            <li style="background-color: #e5e7e8;color:black" class="list-group-item justify-content-between align-items-center flex-wrap">
+                                Number of Posts in the System : @posts.Count
+                            </li>
+                            <li style="background-color: #e5e7e8;color:black" class="list-group-item justify-content-between align-items-center flex-wrap">
+                                Number of Announcements in the System : @announcements.Count
+                            </li>
+                            <li style="background-color: #e5e7e8;color:black" class="list-group-item justify-content-between align-items-center flex-wrap">
+                                System Version Number : @systemVersion
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="card-profile">
+        <div  style="background-color: #e5e7e8;" class="card">
+            <h5 align="center" style="margin-top:10px;" class="align-items-center mb-3">Last 5 Registered Users</h5>
+            <div class="d-flex flex-column align-items-center text-center">
+                <table class="table table-bordered table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Surname
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Phone Number
+                            </th>
+                            <th>
+                                Birthdate
+                            </th>
+                            <th>
+                                Role
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var obj in user.OrderByDescending(x => x.CreatedAt).Take(5))
+                        {
+                            <tr>
+                                <td> @obj.Name </td>
+                                <td> @obj.Surname </td>
+                                <td> @obj.Email </td>
+                                <td> @obj.PhoneNum </td>
+                                <td> @obj.BirthDate </td>
+                                <td> @obj.Role </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,148 @@
+﻿@model LinkedHU_CENG.Models.User
+
+@{
+    ViewData["Title"] = "Edit";
+    var date = ViewData["Date"] as string;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <form asp-action="Edit" asp-controller="Profile" enctype="multipart/form-data">
+        @Html.HiddenFor(model => model.ProfilePicturePath)
+        <div class="main-body">
+            <div class="row ">
+                <div class="col">
+                    <div class="row gutters-sm ">
+                        <div class="col-sm-6 mb-3">
+                            <div class="card h-100 " style="background-color:#ffffff">
+                                <div class="card-body">
+                                    <h6 align="center" ; class="align-items-center mb-3"><b>Account Settings</b></h6>
+                                    <div class="card-aboutme col">
+                                        <ul class="list-group list-group-flush">
+                                            @Html.HiddenFor(model => model.Password)
+                                            @Html.HiddenFor(model => model.Role)
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <input type="hidden" asp-for="UserId" />
+                                            <div class="form-group">
+                                                <label asp-for="Name" class="control-label"><b>Name</b></label>
+                                                <input asp-for="Name" class="form-control" style="box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;"/>
+                                                <span asp-validation-for="Name" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Surname" class="control-label"><b>Surname</b></label>
+                                                <input asp-for="Surname" class="form-control" style="box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;" />
+                                                <span asp-validation-for="Surname" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Email" class="control-label"><b>Email</b></label>
+                                                <input type="hidden" asp-for="Email" class="form-control" style="box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;"/> <br/> @Model.Email
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="SecondEmail" class="control-label"><b >Second email</b></label>
+                                                <input asp-for="SecondEmail" class="form-control" style="box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;" />
+                                                <span asp-validation-for="SecondEmail" class="text-danger"></span>
+                                            </div>
+                                            <center>
+                                            <div class="form-group">
+                                            <input asp-controller="Profile" asp-action="ChangePassword" type="submit" value="Change Password" class="btn btn-danger" margin-bottom: 50px;" />
+                                            </div>
+                                            </center>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="card h-100 custom-shadow1" style="background-color:#ffffff">
+                                <div class="card-body">
+                                    <h6 align="center" ; class="align-items-center mb-3"><b>Personal Information</b></h6>
+                                    <div class="card-aboutme col">
+                                        <ul class="list-group list-group-flush">
+
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label asp-for="ProfilePicture" class="control-label"><b>Profile Picture</b></label>
+                                                        <div class="custom-file">
+                                                            <input asp-for="ProfilePicture" type="file" accept="image/*"  />
+                                                        </div>
+                                                        <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label asp-for="Title" class="control-label"><b>Title</b></label>
+                                                    <input asp-for="Title" class="form-control" style="box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;" />
+                                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                                </div>
+
+                                                <label asp-for="PhoneNum" class="control-label"><b>Phone Number</b></label>
+                                                <input asp-for="PhoneNum" class="form-control" style="box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;" />
+                                                <span asp-validation-for="PhoneNum" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Location" class="control-label"><b>Location</b></label>
+                                                <input asp-for="Location" class="form-control" style="box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;" />
+                                                <span asp-validation-for="Location" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="BirthDate" class="control-label"><b>Birth date</b></label>
+                                                <input asp-for="BirthDate" class="form-control" max="@date" style="box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;"/>
+                                                <span asp-validation-for="BirthDate" class="text-danger"></span>
+                                            </div>
+
+
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6 mb-3">
+                    <div class="card h-100 custom-shadow1" style="background-color:#ffffff">
+                        <div class="card-body">
+
+                            <h6 align="center" ; class="align-items-center" style="margin-bottom: 40px;"><b>About Me</b></h6>
+                            <div class="form-group">
+                                <textarea asp-for="About" class="form-control" id="exampleTextarea" style="border-style: double;" rows="10" placeholder="Write something..."></textarea>
+                            </div>
+                            <span asp-validation-for="About" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save Changes" class="btn btn-success" style="float: right; margin-top: -10px; margin-bottom: 50px;" />
+                    <input asp-controller="User" asp-action="Delete" asp-route-id="@Model.UserId" type="submit" value="Delete Account" class="btn btn-danger" style="float: right; margin-top: -10px; margin-bottom: 50px;" />
+
+                </div>
+    </form>
+
+</div>
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+<script type="text/javascript">
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>
+}

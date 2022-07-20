@@ -1,0 +1,56 @@
+﻿@model List<Comment>
+
+@{
+    var sessionUserID = ViewData["SessionUserId"] as Int32?;
+}
+
+@foreach (var obj in Model.OrderByDescending(a => a.CommentId))
+{
+
+    <div class="card p-3 mt-4  custom-shadow1 " style="background:#FFFFFF;">
+        <div class="custom-margin1">
+            <div class="text-end">
+                <div id="wrapperDiv">
+                    @if (obj.UserId == sessionUserID)
+                    {
+                        <div id="div1" style="padding:5px;float:right;color:#ffffff">
+                            <a style=" color:rgb(39, 55, 76);"  asp-controller="Comment" asp-action="Delete" asp-route-id="@obj.CommentId"
+                       class="dropdown-item mx-2 w-75"> <i class="bi bi-trash-fill"></i> Delete</a>
+                        </div>
+                    }
+                </div>
+            </div>
+            @if (obj.UserProfilePicture == null)
+            {
+                <a asp-controller="User" asp-action="ViewProfile" asp-route-id="@obj.UserId" class="dropdown-item mx-2 w-75" style="width:75%; padding:0px; margin:0px;">
+                    <img src="https://static.thenounproject.com/png/2518416-200.png" class="rounded-circle" height="40" width="40" asp-append-version="true" />
+                    <span style="margin-left:5px; font-size:18px; color:rgb(39, 55, 76);"> @obj.UserName</span>
+                </a>
+
+                @*<img src="https://static.thenounproject.com/png/2518416-200.png" class="rounded-circle" height="40" width="40" asp-append-version="true" />
+                    <a asp-controller="User" asp-action="ViewProfile" asp-route-id="@obj.UserId"
+                    class="dropdown-item mx-2 w-75">  <span style="margin-left:5px; font-size:18px; color:rgb(39, 55, 76);"> @obj.UserName</span></a>*@
+            }
+            else
+            {
+                <a asp-controller="User" asp-action="ViewProfile" asp-route-id="@obj.UserId" class="dropdown-item mx-2 w-75" style="width:75%; padding:0px; margin:0px;">
+                    <img src="~/profilePictures/@obj.UserProfilePicture" class="rounded-circle" height="40" width="40" asp-append-version="true" />
+                    <span style="margin-left:5px; font-size:18px; color:rgb(39, 55, 76);"> @obj.UserName</span>
+
+                </a>
+
+                @* <img src="~/profilePictures/@obj.UserProfilePicture" class="rounded-circle" height="40" width="40" asp-append-version="true" />
+                    <a asp-controller="User" asp-action="ViewProfile" asp-route-id="@obj.UserId"
+                    class="dropdown-item mx-2 w-75">  <span style="margin-left:5px; font-size:18px; color:rgb(39, 55, 76);"> @obj.UserName</span></a>*@
+            }
+            <small class="text-muted"> <span style="margin-left:5px; font-size:12px; color:rgb(39, 55, 76, 0.6);"> @obj.CreatedAt</span></small>
+            <br /> <br />
+            <h6><span style="margin-left:5px; font-size:18px; color:rgb(39, 55, 76);"> @obj.Content</span></h6>
+
+        </div>
+        <div>
+        </div>
+    </div>
+
+    <br />
+}

@@ -1,0 +1,67 @@
+﻿@model LinkedHU_CENG.Models.Post
+@{
+    ViewData["Title"] = "Post";
+    var isUserValid = ViewData["isBanUserValid"] as int?;
+}
+@if (isUserValid == 1)
+{
+    <form asp-controller="Post" asp-action="Update" method="post" enctype="multipart/form-data">
+        @Html.HiddenFor(model => model.PostId)
+        @Html.HiddenFor(model => model.UserId)
+        @Html.HiddenFor(model => model.CreatedAt)
+        @Html.HiddenFor(model => model.UserName)
+        @Html.HiddenFor(model => model.PostImagePath)
+        @Html.HiddenFor(model => model.PostVideoPath)
+        @Html.HiddenFor(model => model.PostPdfPath)
+        @Html.HiddenFor(model => model.UserProfilePicture)
+        <div class="text-center">
+            <div class="border p-3 mt-4 custom-margin1 custom-shadow1">
+                <div class="mb-3 ">
+                    <h3 class="text-primary"><h5 class="text-primary">  <span style="margin-left:5px; font-size:18px; color:rgb(39, 55, 76);"> Update Post </span> </h5></h3>
+                    <input asp-for="Content" class="form-control" />
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                    <br /> <br />
+                    <div class="custom-margin2">
+                        @if (!string.IsNullOrEmpty(Model.PostImagePath))
+                        {
+                            <img src="~/postUploads/@Model.PostImagePath" class="col-sm-10 center" asp-append-version="true" width="300" height=auto />
+                        }
+                        @if (!string.IsNullOrEmpty(Model.PostVideoPath))
+                        {
+                            <video width="320" height="240" controls="controls">
+                                <source src="~/postUploads/@Model.PostVideoPath" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.PostPdfPath))
+                        {
+                            <embed src="~/postUploads/@Model.PostPdfPath" height="500px" width="100%" />
+                        }
+                    </div>
+
+                    <br /> <br />
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            <label asp-for="PostUpload" class="control-label"></label>
+                            <div class="custom-file">
+                                <input asp-for="PostUpload" type="file" accept=".jpeg,jpg,.png,.gif,.mp4,.pdf" />
+                            </div>
+                            <span asp-validation-for="PostUpload" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Update</button>
+            </div>
+        </div>
+    </form>
+}
+@section scripts{
+<script type="text/javascript">
+
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>
+} 

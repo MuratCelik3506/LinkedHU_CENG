@@ -1,0 +1,59 @@
+﻿@model List<LinkedHU_CENG.Models.ViewModels.AdvertisementViewModel>
+
+@{
+    var application = ViewData["Application"] as Application;
+    ViewData["Title"] = "Application";
+}
+
+<div class="row justify-content-center">
+    <div class="col-sm-6 mb-3" style="margin-left:45px;margin-top:150px;width:600px;">
+        <div class="container h-100" style="background-color:#ffffff;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+            <div class="card-body">
+                <h4 align="center" ; class="align-items-center mb-3"><b>Application to @application.Company - @application.AdvertisementTitle</b></h4>
+                <div class="card  p-3 mt-4  custom-shadow1" style="background-color:#ffffff">
+                    <div class="custom-margin1">
+                        @if (application.UserProfilePicture == null)
+                        {
+                            <img src="https://static.thenounproject.com/png/2518416-200.png" class="rounded-circle" height="40" width="40" asp-append-version="true" />
+                        }
+                        else
+                        {
+                            <a asp-controller="User" asp-action="ViewProfile" asp-route-id="@application.UserId" class="dropdown-item mx-2 w-75" style="width:75%; padding:0px; margin:0px;">
+                                <img src="~/profilePictures/@application.UserProfilePicture" class="rounded-circle" width="50" asp-append-version="true" />
+                            </a>
+                        }
+                        <span style="font-size:22px">@application.UserName</span>
+                        <h5>Email</h5>
+                        <h6>@application.Email</h6>
+                        <h5>Phone Number</h5>
+                        <h6>@application.PhoneNum</h6>
+                        <h5>About</h5>
+                        <h6>@application.UserAbout</h6>
+                        <h5>Resume</h5>
+                        @if (application.ResumePath != null)
+                        {
+                            <a href="~/Resumes/@application.ResumePath">See & Download</a>
+                        }
+                        <h6>Certificate 1</h6>
+                        @if (application.Certificate1Path != null)
+                        {
+                            <a href="~/Certificates/@application.Certificate1Path">See & Download</a>
+                        }
+                        <h6>Certificate 2</h6>
+                        @if (application.Certificate2Path != null)
+                        {
+                            <a href="~/Certificates/@application.Certificate2Path">See & Download</a>
+                        }
+                        <h6>Certificate 3</h6>
+                        @if (application.Certificate3Path != null)
+                        {
+                            <a href="~/Certificates/@application.Certificate3Path">See & Download</a>
+                        }
+
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>

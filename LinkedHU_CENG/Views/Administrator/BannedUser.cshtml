@@ -1,0 +1,228 @@
+﻿@{
+    var userModel = ViewData["users"] as List<User>;
+    var banModel = ViewData["bannedUsers"] as List<BannedUser>;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var stateBan = ViewData["stateBan"] as Int32?;
+    var stateUnBan = ViewData["stateUnBan"] as Int32?;
+}
+
+
+
+<div class="row ">
+
+    
+        <div style="margin-top:30px;">
+            <form asp-controller="Administrator" asp-action="BannedUserSearch" class="align-items-center  d-flex">
+                <input type="text" id="fname" name="SearchName" style="width:40%; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;" class="form-control me-sm-2" placeholder="Search">
+                <input style="margin-top:-15px;" type="submit" class="btn btn-light my-2 my-sm-0" value="Search">
+            </form>
+        </div>
+
+
+    <div class="container p-3" style="margin-top:15px;">
+        <table class="table table-bordered table-striped" style="width:100%;">
+            <h5> Search Results </h5>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in userModel)
+                {
+                    <tr>
+                        <td> @obj.Name </td>
+                        <td> @obj.Surname </td>
+                        <td> @obj.Email </td>
+
+                        <td>
+                            @{
+                                bool bool_ban = true;
+
+                                foreach (var ban in banModel)
+                                {
+                                    if (ban.UserId.Equals(obj.UserId))
+                                    {
+                                        bool_ban = false;
+                                    }
+                                }
+
+                                if (bool_ban)
+                                {
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Options</a>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a asp-controller="Administrator" asp-action="BannedUserAccept" asp-route-id="@obj.UserId"
+                                   class="dropdown-item mx-2 w-75"> <i class="bi bi-trash-fill"></i> Ban User</a>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Options</a>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a asp-controller="Administrator" asp-action="BannedUserRevert" asp-route-id="@obj.UserId"
+                                   class="dropdown-item mx-2 w-75"> <i class="bi bi-trash-fill"></i> Unbanned</a>
+                                        </div>
+                                    </div>
+
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+
+    <div class="container p-3" style="margin-top:15px;">
+        <table class="table table-bordered table-striped" style="width:100%">
+            <h5> Banned Users </h5>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Settings</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in banModel)
+                {
+                    <tr>
+                        <td> @obj.Name </td>
+                        <td> @obj.Surname </td>
+                        <td> @obj.Email </td>
+
+                        <td>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Options</a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a asp-controller="Administrator" asp-action="BannedUserRevert" asp-route-id="@obj.UserId"
+                                   class="dropdown-item mx-2 w-75"> <i class="bi bi-trash-fill"></i> Unbanned</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+<div id="box-success-ban" class="alert alert-dismissible alert-success" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong> The user has been successfully banned.
+</div>
+
+<div id="box-success-unban" class="alert alert-dismissible alert-success" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong> The user's ban has been successfully removed.
+</div>
+
+
+
+
+<div id="box-fail-ban" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Oh snap!</strong> An error occurred in the user ban request.
+</div>
+
+<div id="box-fail-unban" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Oh snap!</strong> There was an error requesting to unban the banned user.
+</div>
+
+
+
+@{
+    if (stateBan == 1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-ban");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-ban");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateUnBan == 1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-unban");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-success-unban");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateBan == -1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-ban");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-ban");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+    else if (stateUnBan == -1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-unban");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-fail-unban");
+
+                box.style.visibility = "hidden";
+            },25000);
+        </script>
+    }
+
+}

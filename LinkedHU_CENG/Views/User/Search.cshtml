@@ -1,0 +1,85 @@
+﻿@{
+    var nameSurname = ViewData["NameSurname"] as List<User>;
+    var name = ViewData["Name"] as List<User>;
+    var surname = ViewData["Surname"] as List<User>;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<List<User>> arrayList = new List<List<User>> { nameSurname, name, surname };
+    var sessionUserID = ViewData["SessionUserId"] as Int32?;
+    ViewData["Title"] = "Search";
+    var atLeastOneSearch = ViewData["atLeastOneSearch"] as Int32?;
+}
+
+
+
+<div class="row " style="margin-top:70px">
+    
+
+    <div class="container p-3">
+
+        
+                @foreach (var usrList in arrayList)
+                {
+                    @foreach (var usr in usrList)
+                    {
+                        <div class="container p-3 mt-4  custom-shadow1" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;width:600px; height:140px;margin:auto; background:#ffffff;">
+                            <div  style="width:100%; margin:auto">
+                             <div style="float: left; width: 25%;">
+                                 @if (usr.ProfilePicturePath == null)
+                                {
+                                    <img src="https://static.thenounproject.com/png/2518416-200.png" class="rounded-circle" height="100" width="100" asp-append-version="true" />
+                                }
+                                else
+                                {
+                                    <img src="~/profilePictures/@usr.ProfilePicturePath" class="rounded-circle" height="100px" width="100px" asp-append-version="true" /> 
+                                }
+                             </div>
+                             <div style="float: left; width: 50%;text-align:left;">
+                                    <h4> <span style="font-size:20px;">@usr.Name @usr.Surname</span> </h4>
+                                    <h5 style="opacity: 0.7;"> <span style="font-size:16px;">@usr.Title</span></h5>
+                                    <h6 style="opacity: 0.4;"><span style="font-size:16px;">@usr.Location</span></h6>
+                             </div>
+                             <div style="float: left; width: 25%; ">
+                                <form>
+                                    <input asp-controller="User" asp-action="ViewProfile" asp-route-id="@usr.UserId" type="submit" value="View Profile"  class="btn btn-secondary my-2 my-sm-0 " style="padding:5px;float:right;text-align:left; " />
+                                </form> 
+                             </div>
+                            </div>
+                                
+                                
+                        </div>
+                    }
+
+                }
+           
+    </div>
+</div>
+
+
+<div id="box-no-search" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px;
+    background-color:#FFC300">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Warning!</strong> No results were found matching the search.
+</div>
+
+
+@{
+    if(atLeastOneSearch == -1)
+    {
+        <script>
+            setTimeout(()=>{
+                const box = document.getElementById("box-no-search");
+
+                box.style.visibility = "visible";
+            },50);
+            setTimeout(()=>{
+                const box = document.getElementById("box-no-search");
+
+                box.style.visibility = "hidden";
+            },2500);
+        </script>
+    }
+}

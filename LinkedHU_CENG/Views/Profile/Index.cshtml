@@ -1,0 +1,350 @@
+﻿@using LinkedHU_CENG.Models
+@{
+    ViewData["Title"] = "Profile";
+    var user = ViewData["User"] as User;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var isUserValid = ViewData["isBanUserValid"] as Int32?;
+    var stateChangePassword = ViewData["changePassword"] as Int32?;
+    var stateMerge = ViewData["stateMerge"] as Int32?;
+    var stateDeleteAccount = ViewData["stateDeleteAccount"] as Int32?;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LinkedHU_CENG</title>
+    <link rel="stylesheet" href="~/css/BootstrapProfile.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PostgreSQL.styles.css" asp-append-version="true" />
+</head>
+
+
+<br />
+<br />
+<br />
+
+<div class="container">
+    <div class="main-body">
+        <div class="row">
+
+            <div class="col" >
+                <div class="card-profile">
+                    <div class="card" style="background-color:#ffffff">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            @if (user.ProfilePicturePath == null)
+                            {
+                                    <img src="~/profilePictures/default.png" alt="Admin" class="rounded-circle" width="150">
+                            }
+                            else
+                            {
+                                    <img src="~/profilePictures/@user.ProfilePicturePath" alt="Admin" class="rounded-circle" height="150" width="150">
+                            }
+                            <div class="mt-3">
+                                <h4>@user.Name @user.Surname</h4>
+                                @if (user.Title == null)
+                                {
+                                        <p class="text-secondary mb-1"></p>
+                                }
+                                else
+                                {
+                                        <p class="text-secondary mb-1">@user.Title</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row gutters-sm">
+                    <div  class="col-sm-6 mb-3" >
+                        <div class="card h-100 " style="background-color:#ffffff">
+                            <div class="card-body">
+                                <h6 align="center" ; class="align-items-center mb-3">Personal Information</h6>
+                                <div class="card-aboutme col" style="background-color:#ffffff">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                            <h6 class="mb-0"><span style="font-size:15px; color:rgb(39, 55, 76);"> Phone Number</span></h6>
+                                            <h6 class="text-secondary h6-custom"><span style=" font-size:15px; color:rgb(39, 55, 76);"> @user.PhoneNum</span></h6>
+                                        </li>
+                                        <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                            <h6 class="mb-0"><span style="font-size:15px; color:rgb(39, 55, 76);"> Email Address</span></h6>
+                                            <h6 class="text-secondary h6-custom"><span style="font-size:15px; color:rgb(39, 55, 76);"> @user.Email</span>
+                                        </li>
+                                        @if (@user.Location == null)
+                                        {
+                                                <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                                    <h6 class="mb-0"><span style="font-size:15px; color:rgb(39, 55, 76);"> Location</span></h6>
+                                                    <h6 class="text-secondary h6-custom"><span style="font-size:15px; color:rgb(39, 55, 76);">You can add your location information.</span></h6>
+                                                </li>
+                                        }
+                                        else
+                                        {
+                                                <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                                    <h6 class="mb-0"><span style="font-size:15px; color:rgb(39, 55, 76);"> Location<span></h6>
+                                                    <h6 class="text-secondary h6-custom"><span style=" font-size:15px; color:rgb(39, 55, 76);"> @user.Location</span></h6>
+                                                </li>
+                                        }
+                                        <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                            <h6 class="mb-0"><span style=" font-size:15px; color:rgb(39, 55, 76);"> Birthdate</span></h6>
+                                            <h6 class="text-secondary h6-custom"><span style="font-size:15px; color:rgb(39, 55, 76);"> @user.BirthDate</span></h6>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="card h-100" style="background-color:#ffffff">
+                            <div class="card-body">
+                                @if (@user.About == null)
+                                {
+                                        <h6 align="center" ; class="align-items-center mb-3">About Me</h6>
+                                        <div class="card-aboutme col" style="background-color:#ffffff">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                                    <h6 class="mb-0 h6-custom">
+                                                        <span style=" font-size:15px; color:rgb(39, 55, 76);">You can write about your years of experience, industry, or skills. People also talk about their achievements or previous job experiences.</span>
+                                                    </h6>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                }
+                                else
+                                {
+                                        <h6 align="center" ; class="align-items-center mb-3">About Me</h6>
+                                        <div class="card-aboutme col " style="background-color:#ffffff">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item justify-content-between align-items-center flex-wrap" style="background-color:#ffffff">
+                                                    <span style="margin-left:5px; font-size:15px; color:rgb(39, 55, 76);"> @user.About</span>
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @if (user.Role == "academician")
+                {
+                    @*                <div>
+                        <partial name="~/Views/Resource/Create.cshtml" view-data="ViewData" />
+                        </div>*@
+                    @if (isUserValid == 1)
+                    {
+                                <div class="card custom-shadow1" style="margin-left:22px; width:495px; background-color:#ffffff;">
+                                    <partial name="~/Views/Resource/Create.cshtml" view-data="ViewData" />
+                                </div>
+                    }
+                        <br />
+                        <section id='title-wrapper' style="margin-left:22px; margin-top:0px;width:495px;">
+                            <div class='line'></div>
+                            <div class='title'><span style=" font-size:15px; color:rgb(39, 55, 76, 0.5); ;"> resources</span></div>
+                            <div class='line'></div>
+                        </section>
+                        <div>
+                        @await Component.InvokeAsync("ResourceViewComponent")
+                        </div>
+                }
+            </div>
+
+            <div class="col mt-3">
+                <div class="card mb-3 custom-shadow1" style=" background-color:#ffffff;">
+                    <div class="card-body">
+                        <div style="display:block; width:100%;">
+                            @await Component.InvokeAsync("OwnedPostViewComponent")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+<div id="box-wrongPassword" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 75px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px;
+    background-color:#FFC300">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Warning!</strong> Your current password was entered incorrectly.
+</div>
+
+
+
+<div id="box-success-merge" class="alert alert-dismissible alert-success" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong> Merge request successfully forwarded to admin.
+</div>
+<div id="box-emptyMerge" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 75px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px;
+    background-color:#FFC300">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Warning!</strong> You cannot leave your second e-mail blank.
+</div>
+<div id="box-failMoreRequest" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 75px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px;
+    background-color:#FFC300">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Warning!</strong> You have made more than one merge email request. Your request could not be sent to the admin.
+</div>
+<div id="box-sameMail" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 75px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px;
+    background-color:#FFC300">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Warning!</strong> This e-mail cannot be received because it is in the system.
+</div>
+
+
+<div id="box-deleteAccount-success" class="alert alert-dismissible alert-success" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong> Your account deletion request has been successfully delivered to the admin.
+</div>
+<div id="box-deleteAccount-moreRequest" class="alert alert-dismissible alert-danger" style="visibility:hidden; position:fixed; top: 75px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px;
+    background-color:#FFC300">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Warning!</strong> It's not being sent again because you've submitted a request before.
+</div>
+
+@{
+    if (stateChangePassword == -1)
+    {
+        <script>
+                    setTimeout(()=>{
+                        const box = document.getElementById("box-wrongPassword");
+
+                        box.style.visibility = "visible";
+                    },50);
+                    setTimeout(()=>{
+                        const box = document.getElementById("box-wrongPassword");
+
+                        box.style.visibility = "hidden";
+                    },2500);
+        </script>
+    }
+
+    else if (stateMerge == 1)
+    {
+<script>
+    setTimeout(()=>{
+        const box = document.getElementById("box-success-merge");
+
+        box.style.visibility = "visible";
+    },50);
+    setTimeout(()=>{
+        const box = document.getElementById("box-success-merge");
+
+        box.style.visibility = "hidden";
+    },2500);
+</script>
+    }
+    else if (stateMerge == -1)
+    {
+<script>
+    setTimeout(()=>{
+        const box = document.getElementById("box-emptyMerge");
+
+        box.style.visibility = "visible";
+    },50);
+    setTimeout(()=>{
+        const box = document.getElementById("box-emptyMerge");
+
+        box.style.visibility = "hidden";
+    },2500);
+</script>
+    }
+    else if (stateMerge == -2)
+    {
+<script>
+    setTimeout(()=>{
+        const box = document.getElementById("box-failMoreRequest");
+
+        box.style.visibility = "visible";
+    },50);
+    setTimeout(()=>{
+        const box = document.getElementById("box-failMoreRequest");
+
+        box.style.visibility = "hidden";
+    },2500);
+</script>
+    }
+    else if (stateMerge == -3)
+    {
+<script>
+    setTimeout(()=>{
+        const box = document.getElementById("box-sameMail");
+
+        box.style.visibility = "visible";
+    },50);
+    setTimeout(()=>{
+        const box = document.getElementById("box-sameMail");
+
+        box.style.visibility = "hidden";
+    },2500);
+</script>
+    }
+    else if (stateDeleteAccount == 1)
+    {
+<script>
+    setTimeout(()=>{
+        const box = document.getElementById("box-deleteAccount-success");
+
+        box.style.visibility = "visible";
+    },50);
+    setTimeout(()=>{
+        const box = document.getElementById("box-deleteAccount-success");
+
+        box.style.visibility = "hidden";
+    },2500);
+</script>
+    }
+    else if (stateDeleteAccount == -1)
+    {
+<script>
+    setTimeout(()=>{
+        const box = document.getElementById("box-deleteAccount-moreRequest");
+
+        box.style.visibility = "visible";
+    },50);
+    setTimeout(()=>{
+        const box = document.getElementById("box-deleteAccount-moreRequest");
+
+        box.style.visibility = "hidden";
+    },2500);
+</script>
+    }
+}
+

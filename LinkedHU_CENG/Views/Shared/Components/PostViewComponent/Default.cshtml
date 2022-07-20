@@ -1,0 +1,121 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<LinkedHU_CENG.Models.ViewModels.PostCommentViewModel>
+
+@{
+    var sessionUserID = ViewData["SessionUserId"] as Int32?;
+}
+
+<table class="table  table-striped" style="width:100%">
+    @foreach (var obj in Model.OrderByDescending(a => a.post.PostId))
+    {
+        <div class="container text-whitemb-3" style="margin-top:10px; width:600px; margin-left:250px; max-height:auto; padding: 10px; background:#FFFFFF; box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;">
+            <div class="row" style="margin:0px;">
+                <div class="column" style="width:80%">
+                    @if (obj.post.UserProfilePicture == null)
+                    {
+                        <a asp-controller="User" asp-action="ViewProfile" asp-route-id="@obj.post.UserId" class="dropdown-item mx-2 w-75" style="width:75%; padding:0px; margin:0px;">
+                            <img src="https://static.thenounproject.com/png/2518416-200.png" class="rounded-circle" height="50" width="50" asp-append-version="true" />
+                            <span style="margin-left:5px; font-size:18px; color:rgb(39, 55, 76);"> @obj.post.UserName</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="User" asp-action="ViewProfile" asp-route-id="@obj.post.UserId" class="dropdown-item mx-2 w-75" style="width:75%; padding:0px; margin:0px;">
+                            <img src="~/profilePictures/@obj.post.UserProfilePicture" class="rounded-circle" height="50" width="50" asp-append-version="true" />
+                            <span style="margin-left:5px; font-size:18px; color:rgb(39, 55, 76);"> @obj.post.UserName</span>
+                        </a>
+                    }
+
+                </div>
+                <div class="column" style="width:20%">
+                    <div class="row">
+                        <div class="column" style="width:50%;">
+
+                            <div class="column" style="width:20%">
+                                <div class="row">
+                                    @if (sessionUserID == obj.post.UserId)
+                                    {
+                                        <div class="column" style="width:50%;">
+                                            <div class="dropdown">
+                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="text-decoration: none;">Edit</a>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <a style=" color:rgb(39, 55, 76);" asp-controller="Post" asp-action="Update" asp-route-id="@obj.post.PostId"
+                                               class="dropdown-item mx-2 w-75"> <i class="bi bi-pencil-square"></i> Update</a>
+
+                                                    <a style=" color:rgb(39, 55, 76);" asp-controller="Post" asp-action="Delete" asp-route-id="@obj.post.PostId"
+                                               class="dropdown-item mx-2 w-75"> <i class="bi bi-trash-fill"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    <div class="column" style="width:50%;">
+                                        <button onclick="copyText()" style="border:none; color:#4c9be8; background:none"><i class="fa-solid fa-share-nodes"></i></button>
+                                        <script>
+                                            function copyText() {
+                                                navigator.clipboard.writeText
+                                                    ("https://localhost:7263/Post/ViewPost/" + @obj.post.PostId );
+                                                setTimeout(()=>{
+                                                    const box = document.getElementById("box-success");
+
+                                                    box.style.visibility = "visible";
+                                                },50);
+                                                setTimeout(()=>{
+                                                    const box = document.getElementById("box-success");
+
+                                                    box.style.visibility = "hidden";
+                                                },2500);
+                                            }
+                                        </script>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <span style="margin-left:5px; font-size:12px; color:rgb(39, 55, 76, 0.7);"> @obj.post.CreatedAt</span>
+                <div style="margin-top: 10px; margin-bottom:10px; color:#fff">
+                    <span style="margin-left:5px; font-size:18px; color:rgb(39, 55, 76);"> @obj.post.Content</span>
+                </div>
+                @if (obj.post.PostImagePath != null)
+                {
+                    <img src="~/postUploads/@obj.post.PostImagePath" class="col-sm-10 center" asp-append-version="true" width="300" height=auto />
+                }
+                @if (obj.post.PostVideoPath != null)
+                {
+                    <video width="320" height="240" class="center" controls="controls">
+                        <source src="~/postUploads/@obj.post.PostVideoPath" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                }
+                @if (obj.post.PostPdfPath != null)
+                {
+                    <embed src="~/postUploads/@obj.post.PostPdfPath" height="500px" width="100%" class="responsive" />
+                    <a href="~/postUploads/@obj.post.PostPdfPath">See & Download</a>
+
+                    @*<p>See & Download <a href="~/postUploads/@obj.PostPdfPath">@obj.PostPdfPath</a> here!</p>*@
+                }
+                <partial name="~/Views/Comment/Create.cshtml" model="@obj" />
+                @* @Html.Partial("~/Views/Comment/Create.cshtml", model = obj)*@
+                @{
+                    bool takeAll2 = false;
+                }
+                @await Component.InvokeAsync("CommentViewComponent", new {obj.postId, takeAll2})
+                <a asp-controller="Post" asp-action="ViewPost" asp-route-id="@obj.postId"> Click here to see more comments.</a>
+            </div>
+        </div>
+    }
+</table>
+
+
+<div id="box-success" class="alert alert-dismissible alert-success" style="visibility:hidden; position:fixed; top: 70px;
+    right: 0px;
+    width: 40%;
+    z-index:9999;
+    border-radius:0px">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong> Link successfully copied.
+</div>

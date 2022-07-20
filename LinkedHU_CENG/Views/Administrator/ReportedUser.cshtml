@@ -1,0 +1,55 @@
+﻿@{
+    var reports = ViewData["Report"] as List<Report>;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "ReportedUser";
+}
+
+
+
+<div style="margin-top:30px;">
+            <form asp-controller="Administrator" asp-action="BannedUserSearch" class="align-items-center  d-flex">
+                <input type="text" id="fname" name="SearchName" style="width:40%; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;" class="form-control me-sm-2" placeholder="Search">
+                <input style="margin-top:-15px;" type="submit" class="btn btn-light my-2 my-sm-0" value="Search to Ban User">
+            </form>
+</div>
+
+
+<div class="container p-3">
+
+    <br /><br />
+
+    <table class="table table-bordered table-striped" style="width:100%">
+
+        <thead>
+            <tr>
+                <th>
+                    Report ID
+                </th>
+                <th>
+                    Name Surname
+                </th>
+                <th>
+                    Sender User
+                </th>
+                <th>
+                    Detail
+                </th>
+                <th>
+                    Created at
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in reports)
+            {
+                <tr>
+                    <td> @obj.ReportId </td>
+                    <td> @obj.ReportUserName </td>
+                    <td> @obj.UserId </td>
+                    <td> @obj.Detail </td>
+                    <td> @obj.CreatedAt </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LinkedHU_CENG.Models.Advertisement>
+
+@{
+    var sessionUserID = ViewData["SessionUserId"] as Int32?;
+}
+
+<table class="table" style="width:100%">
+       @foreach(var obj in Model.OrderByDescending(a=>a.AdvertisementId))
+       {
+        @if(sessionUserID == obj.UserId)
+        {
+            <div class = "container">
+                <div class="card" style="background-color:#ffffff;padding:25px;">
+                    <div id="wrapperDiv">
+                        <div id="div2" style="padding:5px;float:right;color:#ffffff"> 
+                                    <div class="dropdown text-end">
+                                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Edit</a>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <a style=" color:rgb(39, 55, 76);"  asp-controller="Advertisement" asp-action="Close" asp-route-id="@obj.AdvertisementId" 
+                                                    class="dropdown-item mx-2 w-75"> <i class="bi bi-pencil-square"></i>Close Application</a>
+                                                <a style=" color:rgb(39, 55, 76);"  asp-controller="Advertisement" asp-action="Update" asp-route-id="@obj.AdvertisementId" 
+                                                    class="dropdown-item mx-2 w-75"> <i class="bi bi-pencil-square"></i>Update</a>
+                                                <a style=" color:rgb(39, 55, 76);"  asp-controller="Advertisement" asp-action="Delete" asp-route-id="@obj.AdvertisementId"
+                                                    class="dropdown-item mx-2 w-75"> <i class="bi bi-trash-fill"></i>Delete</a>
+                                            </div>
+                                    </div>
+                        </div>
+                    </div>
+
+                    <h5>@obj.Title</h5>
+                    <h6>@obj.Company</h6>
+                    <h6>@obj.Type</h6>
+                    <h6>@obj.Location</h6>
+                    <br />
+                    <h6>@obj.UserName</h6>
+                    <h6> <span style="font-size:12px">@obj.CreatedAt</span></h6>
+                    <br>
+                    <h6>@obj.Description</h6>
+				    <br> 
+                    <div class="d-flex">
+                        <input type="button"  class="btn btn-secondary my-2 my-sm-0" value="Get Applicant’s Details" onclick="@("window.location.href='" + @Url.Action("GetApplicantsDetails", "Advertisement",  obj) + "'");" />
+                    </div>
+                </div>
+            </div>
+        }
+        <br />
+       }
+</table>

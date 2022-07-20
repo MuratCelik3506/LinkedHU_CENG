@@ -1,0 +1,38 @@
+﻿@model LinkedHU_CENG.Models.Resource
+@{
+    ViewData["Title"] = "Resource";
+}
+
+
+<form asp-controller="Resource" asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class=" p-3  custom-shadow1">
+        <div class="mb-3 ">
+            <h3 class="text-primary"><span style="margin-left:5px; font-size:20px; color:rgb(39, 55, 76);">Share Resources</span></h3>
+            <h5 class="text-primary"><span style="margin-left:5px; font-size:22px; color:rgb(39, 55, 76);">Title</span></h5>
+            <input style="background-color:white;" asp-for="Title" class="form-control card" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="UploadedFile" class="control-label"></label>
+                    <div class="custom-file">
+                        <input  asp-for="UploadedFile" type="file" accept=".ppt,.pptx,.xls,.xlsx,.doc,.docx,.mp4,.pdf" />
+                    </div>
+                    <span asp-validation-for="UploadedFile" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Share</button>
+    </div>
+</form>
+
+
+@section scripts{
+<script type="text/javascript">
+
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>
+}
