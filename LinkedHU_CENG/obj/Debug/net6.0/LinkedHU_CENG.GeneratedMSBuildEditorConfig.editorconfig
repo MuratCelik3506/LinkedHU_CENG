@@ -1,0 +1,236 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = LinkedHU_CENG
+build_property.RootNamespace = LinkedHU_CENG
+build_property.ProjectDir = C:\Users\murat\Desktop\exploding gradient\V1\bbm384-2022-demo-final-exploding-gradients\LinkedHU_CENG\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = C:\Users\murat\Desktop\exploding gradient\V1\bbm384-2022-demo-final-exploding-gradients\LinkedHU_CENG
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Administrator/BannedUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxCYW5uZWRVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Administrator/DeleteUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxEZWxldGVVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Administrator/ExportUserDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxFeHBvcnRVc2VyRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Administrator/ForgetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxGb3JnZXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Administrator/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Administrator/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Administrator/MergeEmailRequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxNZXJnZUVtYWlsUmVxdWVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Administrator/ReportedUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxSZXBvcnRlZFVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Administrator/StudentRepresentative.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxTdHVkZW50UmVwcmVzZW50YXRpdmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Administrator/VerifyAccounts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRvclxWZXJpZnlBY2NvdW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Advertisement/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWR2ZXJ0aXNlbWVudFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Advertisement/GetApplicantsDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWR2ZXJ0aXNlbWVudFxHZXRBcHBsaWNhbnRzRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Advertisement/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWR2ZXJ0aXNlbWVudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Advertisement/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWR2ZXJ0aXNlbWVudFxVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Announcement/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5ub3VuY2VtZW50XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Announcement/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5ub3VuY2VtZW50XFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Application/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwbGljYXRpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Application/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwbGljYXRpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Application/ViewApplication.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwbGljYXRpb25cVmlld0FwcGxpY2F0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Comment/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Home/LoggedIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dnZWRJbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Home/PrivacyLoggedIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5TG9nZ2VkSW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Home/WelcomePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxXZWxjb21lUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Post/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Post/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Post/ViewPost.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxWaWV3UG9zdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Profile/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Profile/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Profile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Report/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Resource/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzb3VyY2VcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Resource/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzb3VyY2VcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Shared/Components/AdvertisementViewComponent/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQWR2ZXJ0aXNlbWVudFZpZXdDb21wb25lbnRcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Shared/Components/AnnouncementViewComponent/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQW5ub3VuY2VtZW50Vmlld0NvbXBvbmVudFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Shared/Components/CommentViewComponent/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ29tbWVudFZpZXdDb21wb25lbnRcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Shared/Components/OwnedAdvertisementViewComponent/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcT3duZWRBZHZlcnRpc2VtZW50Vmlld0NvbXBvbmVudFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Shared/Components/OwnedPostViewComponent/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcT3duZWRQb3N0Vmlld0NvbXBvbmVudFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Shared/Components/PostViewComponent/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUG9zdFZpZXdDb21wb25lbnRcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Shared/Components/ResourceViewComponent/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUmVzb3VyY2VWaWV3Q29tcG9uZW50XERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Shared/_AdminLayoutGuest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dEd1ZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/UnregisteredUser/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5yZWdpc3RlcmVkVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/UnregisteredUser/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5yZWdpc3RlcmVkVXNlclxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/User/ForgetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxGb3JnZXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/User/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/User/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/User/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-nopmr9lx0i
+
+[C:/Users/murat/Desktop/exploding gradient/V1/bbm384-2022-demo-final-exploding-gradients/LinkedHU_CENG/Views/Shared/_LayoutGuest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRHdWVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-s9re6g6i2a
