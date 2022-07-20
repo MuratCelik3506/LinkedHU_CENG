@@ -1,0 +1,134 @@
+﻿:root {
+    --bs-blue: #007bff;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #e83e8c;
+    --bs-red: #ff7851;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffce67;
+    --bs-green: #56cc9d;
+    --bs-teal: #20c997;
+    --bs-cyan: #6cc3d5;
+    --bs-white: #fff;
+    --bs-gray: #888;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #f7f7f9;
+    --bs-gray-300: #eceeef;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #aaa;
+    --bs-gray-600: #888;
+    --bs-gray-700: #5a5a5a;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    --bs-primary: #78c2ad;
+    --bs-secondary: #f3969a;
+    --bs-success: #56cc9d;
+    --bs-info: #6cc3d5;
+    --bs-warning: #ffce67;
+    --bs-danger: #ff7851;
+    --bs-light: #f8f9fa;
+    --bs-dark: #343a40;
+    --bs-primary-rgb: 120, 194, 173;
+    --bs-secondary-rgb: 243, 150, 154;
+    --bs-success-rgb: 86, 204, 157;
+    --bs-info-rgb: 108, 195, 213;
+    --bs-warning-rgb: 255, 206, 103;
+    --bs-danger-rgb: 255, 120, 81;
+    --bs-light-rgb: 248, 249, 250;
+    --bs-dark-rgb: 52, 58, 64;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-body-color-rgb: 136, 136, 136;
+    --bs-body-bg-rgb: 255, 255, 255;
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #888;
+    --bs-body-bg: #f8f8f8;
+}
+
+body {
+    color: #1a202c;
+    text-align: left;
+    background-color: #f8f8f8;
+}
+
+.main-body {
+    padding: 15px;
+}
+
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card-profile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    width: 500px;
+    margin: 20px;
+}
+.card-aboutme {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    display: inline-block;
+    width: 200px;
+    margin-right: -5px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: 20px;
+    width: 500px;
+}
+
+    .gutters-sm > .col, .gutters-sm > [class*=col-] {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+.mb-3, .my-3 {
+    margin-bottom: 1rem !important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+
+.h-100 {
+    width: 245px;
+    height: 100% !important;
+    margin-left: -6px;
+}
+
+.shadow-none {
+    box-shadow: none !important;
+}
+
+.h6-custom {
+    font-size: 14px;
+}
